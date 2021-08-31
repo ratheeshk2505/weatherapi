@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/da1cf35165.js" crossorigin="anonymous"></script>
+    <title>Weather Info</title>
+    <style>
+        body {
+          background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('./weather-bg.jpeg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;  
+          background-size: 100% 100%;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row  mt-5">
+            <div class="text-center text-white" style="font-size: 70px"><i class="fas  fa-cloud"></i> Weather API</div>
+            <div class="col-4"></div>
+            <div class="col-4 mx-5 my-3">
+                <div class="row gy-3 gx-2 mx-5 align-items-center">
+                    <div class="col-auto"><input type="text" id="city" class="form-control"></div>
+                    <div class="col-auto"><button class="btn btn-primary" onclick="fetchTemp()">Search</button></div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row mt-1" >
+            <div class="col-2"></div>
+            <div class="col-8" id="disp">
+                
+            </div>
+            <div class="col-2" ></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function fetchTemp(){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=4687584c8033f824fa0c2b8920b149ef`).then(res=>res.json()).then(data=>displayValues(data))
+   
+    }
+    function displayValues(data){
+        console.log(data.dt);
+        let icon_url=`http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+        let html_data=`<div class="container-fluid">
+                        <div class="row mt-3 border border-dark bg-light">
+                            <div class="text-center text-white p-1 " style="background-color: rgb(0, 0, 0"><span class="fs-2">${data.name}, ${data.sys.country}</span></div>
+                            <div class="col-4 mt-4 p-3 text-center"><img src='${icon_url}'><span class="fs-2"> <b>${data.weather[0].main}</b></span><br><span class="ms-5 fs-6 fst-italic">  ${data.weather[0].description}</span></div>
+                            <div class="col-4 p-2 text-center">
+                                <div class="p-1"><span class="" style="font-size: 50px"> <b>${data.main.temp}</b> <sup><span class="fs-5 fw-bold"> &#8451;</span> <span class="fs-5" style="color: grey"> | &#8457;</span></sup></span></div>
+                                <div class="p-2 my-3">
+                                    <i class="fas fa-temperature-high"></i><span class="fs-5"> Highest Temp: <b>${data.main.temp_max}</b></span><sup><span class=""> &#8451;</span></sup><br>
+                                    <i class="fas fa-temperature-low"></i><span class="fs-5"> Lowest Temp: <b>${data.main.temp_min}</b></span><sup><span class=""> &#8451;</span></sup>
+                                </div>
+                            </div>
+                            <div class="col-4 p-3">
+                                <div class="p-2 text-center">
+                                    <span class="fs-5"> Humidity: <b>${data.main.humidity}</b></span><span> &#37;</span> <br>
+                                    <span class="fs-5"> Pressure: <b>${data.main.pressure}</b></span><span> hPa</span>
+                                </div>
+                                <div class="p-1 text-center mt-2">
+                                    <h5 class="fs-5"> Wind</h5>
+                                    <span class="fs-6"> Speed: <b><span class="fs-5">${data.wind.speed}</b></span></span><span> kmph</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        disp.innerHTML=html_data;
+    }
+</script>
+
+<!-- style="background-color: rgb(215, 215, 248)" -->
+<!-- <span class="text-end">( Lon:- ${data.coord.lon}, Lat:- ${data.coord.lat} )</span> -->
+<!-- <i class="fas fa-2x fa-cloud"></i> -->
+<!-- <span class="fs-2 font-bold"">${data.main.temp}</span><span> &#8451;</span> | <span>&#8457;</span> -->
+</html>
