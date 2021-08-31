@@ -19,22 +19,23 @@
 <body>
     <div class="container">
         <div class="row  mt-5">
-            <div class="text-center text-white" style="font-size: 70px"><i class="fas  fa-cloud"></i> Weather API</div>
-            <div class="col-4"></div>
-            <div class="col-4 mx-5 my-3">
-                <div class="row gy-3 gx-2 mx-5 align-items-center">
-                    <div class="col-auto"><input type="text" id="city" class="form-control"></div>
-                    <div class="col-auto"><button class="btn btn-primary" onclick="fetchTemp()">Search</button></div>
+            <div class="text-center text-white" style="font-size: 36px"><i class="fas fa-cloud"></i> Weather API</div>
+            <div class="col-lg-4 col-md-4 col-sm-12"></div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mx-5 my-3">
+                <div class="row mx-0">
+                    <!-- <div class="col-1"></div> -->
+                    <div class="col-7"><input type="text" id="city" class="form-control"></div>
+                    <div class="col-4"><button class="btn btn-primary" onclick="fetchTemp()">Search</button></div>
                 </div>
             </div>
-            <div class="col-4"></div>
+            <div class="col-lg-4 col-md-4 col-sm-12"></div>
         </div>
         <div class="row mt-1" >
-            <div class="col-2"></div>
-            <div class="col-8" id="disp">
+            <div class="col-sm-1 col-md-1 col-lg-1 "></div>
+            <div class="col-sm-10 col-md-10 col-lg-10" id="disp">
                 
             </div>
-            <div class="col-2" ></div>
+            <div class="col-sm-1 col-md-1 col-lg-1" ></div>
         </div>
     </div>
 </body>
@@ -50,15 +51,15 @@
         let html_data=`<div class="container-fluid">
                         <div class="row mt-3 border border-dark bg-light">
                             <div class="text-center text-white p-1 " style="background-color: rgb(0, 0, 0"><span class="fs-2">${data.name}, ${data.sys.country}</span></div>
-                            <div class="col-4 mt-4 p-3 text-center"><img src='${icon_url}'><span class="fs-2"> <b>${data.weather[0].main}</b></span><br><span class="ms-5 fs-6 fst-italic">  ${data.weather[0].description}</span></div>
-                            <div class="col-4 p-2 text-center">
+                            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 p-3 text-center"><img src='${icon_url}'><span class="fs-2"> <b>${data.weather[0].main}</b></span><br><span class="ms-5 fs-6 fst-italic">  ${data.weather[0].description}</span></div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 p-2 text-center">
                                 <div class="p-1"><span class="" style="font-size: 50px"> <b>${data.main.temp}</b> <sup><span class="fs-5 fw-bold"> &#8451;</span> <span class="fs-5" style="color: grey"> | &#8457;</span></sup></span></div>
                                 <div class="p-2 my-3">
                                     <i class="fas fa-temperature-high"></i><span class="fs-5"> Highest Temp: <b>${data.main.temp_max}</b></span><sup><span class=""> &#8451;</span></sup><br>
                                     <i class="fas fa-temperature-low"></i><span class="fs-5"> Lowest Temp: <b>${data.main.temp_min}</b></span><sup><span class=""> &#8451;</span></sup>
                                 </div>
                             </div>
-                            <div class="col-4 p-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4 p-3">
                                 <div class="p-2 text-center">
                                     <span class="fs-5"> Humidity: <b>${data.main.humidity}</b></span><span> &#37;</span> <br>
                                     <span class="fs-5"> Pressure: <b>${data.main.pressure}</b></span><span> hPa</span>
