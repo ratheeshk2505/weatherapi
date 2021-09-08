@@ -1,3 +1,12 @@
+var input = document.getElementById("city");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     document.getElementById("myBtn").click();
+    }
+  });
+
+
 function fetchTemp(){
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=4687584c8033f824fa0c2b8920b149ef`).then(res=>res.json()).then(data=>displayValues(data))
    
@@ -43,21 +52,22 @@ function displayValues(data){
                         </div>
                     </div>`;
         disp.innerHTML=html_data;
-        
     }
 }
-
 function unixToDate(timestamp){
     var a = new Date(timestamp * 1000);
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
+    // var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
     var hour = a.getHours();
     var min = a.getMinutes();
-    var sec = a.getSeconds();
-    console.log(a.getDay());
-    var time = date + ' ' + month + ' ' + year + ', ' + hour + ':' + min ;
+    if(min<10){
+        min='0'+min;
+    }
+    // var sec = a.getSeconds();
+    var time = month + ' ' + date + ', ' + hour + ':' + min ;
     return time;
   }
+
 
