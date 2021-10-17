@@ -41,12 +41,12 @@ function displayValues(data){
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-4 p-3">
                                 <div class="p-3 text-center">
-                                    <span class="fs-5 p-2"> Humidity: <b>${data.main.humidity}</b></span><span> &#37;</span> <br>
-                                    <span class="fs-5 p-2"> Pressure: <b>${data.main.pressure}</b></span><span> hPa</span>
+                                    <span class="fs-5 p-2"> Humidity: <b>${data.main.humidity}</b></span><span>&#37;</span> <br>
+                                    <span class="fs-5 p-2"> Pressure: <b>${data.main.pressure}</b></span><span>hPa</span>
                                 </div>
                                 <div class="p-2 text-center mt-3">
                                     <h5 class="fs-5"> Wind</h5>
-                                    <span class="fs-6 p-2"> Speed: <b><span class="fs-5">${data.wind.speed}</b></span></span><span> m/s</span>
+                                    <span class="fs-6 p-2"> Speed: <b><span class="fs-5">${data.wind.speed}</b></span></span><span>m/s</span>
                                 </div>
                             </div>
                         </div>
