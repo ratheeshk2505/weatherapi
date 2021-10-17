@@ -13,19 +13,13 @@ function fetchTemp(){
 }
 
 function displayValues(data){
-        // console.log(data.cod);
         if(data.cod>399){
             disp.innerHTML=`<div class="text-center text-white p-1 mt-3 border border-secondary col-12" style="background-color: rgb(0, 0, 0"><span class="fs-2">City Not Found.</span></div>`;
         }
         else{
-        // console.log(data.dt);
-        // console.log(data.timezone);
         let mytz=19800;
         let unixData=data.dt-mytz+data.timezone;
-        // console.log(unixData);
         let loc_time=unixToDate(unixData);
-        // let loc_time=unixToDate(data.dt);
-        // console.log(loc_time);
         let icon_url=`https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
         let html_data=`<div class="container-fluid">
                         <div class="row mt-3 border border-dark bg-light">
